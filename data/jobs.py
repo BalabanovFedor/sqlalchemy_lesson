@@ -4,7 +4,6 @@ from sqlalchemy import orm
 from .db_session import SqlAlchemyBase
 
 
-
 class Jobs(SqlAlchemyBase):
     __tablename__ = "jobs"
     id = sqlalchemy.Column(sqlalchemy.Integer, autoincrement=True, primary_key=True)
@@ -16,3 +15,6 @@ class Jobs(SqlAlchemyBase):
     end_date = sqlalchemy.Column(sqlalchemy.DateTime)
     is_finished = sqlalchemy.Column(sqlalchemy.Boolean)
     team_leader = orm.relation('User')
+
+    def __repr__(self):
+        return f"<Job> {self.job}"
